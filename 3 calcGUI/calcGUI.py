@@ -1,6 +1,6 @@
 from tkinter import *
 from math import sqrt as sqr
-
+from math import sin as Sin
 
 class Calculator(Frame):
     """
@@ -10,7 +10,7 @@ class Calculator(Frame):
 
     def __init__(self, master):
         """
-        Initializes the frame.
+        Initializes cthe frame.
         :param master: root.Tk()
         """
         Frame.__init__(self, master)
@@ -74,6 +74,7 @@ class Calculator(Frame):
         e = e.replace("²", "**2")
         e = e.replace("^", "**")
         e = e.replace("÷", "/")
+        e = e.replace("sin","Sin")
 
         try:
             ans = eval(e)
@@ -144,6 +145,9 @@ class Calculator(Frame):
         Creates the widgets to be used in the grid.
         :return: None
         """
+        self.sin_bttn = Button(self, text="sin", width=9, height=3, command=lambda: self.add_chr('sin'))
+        self.sin_bttn.grid(row=1, column=6)
+
         self.eq_bttn = Button(self, text="=", width=20, height=3, bg="lightgrey", command=lambda: self.calculate())
         self.eq_bttn.grid(row=4, column=4, columnspan=2)
 
